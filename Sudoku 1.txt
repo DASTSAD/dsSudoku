@@ -1,0 +1,29 @@
+sudoku from net by Daniel 120829
+5 <-Box size in X direction (note sudoku sixe ist (x*y)*(x*y)
+5 <-Box size in X direction
+---------------------------
+.2...3D.8........C4N.71..
+.0G...6H..LF.B....1...CI.
+.ENC7...4.0..3D.H....L26.
+..1K..E.L..IC...8....FHJ.
+.5..J7OI...KGH20BL9EA....
+A...L8.N715...CFGOM24.6.I
+F9B.G.IL....HK..J6C.7..MA
+..6.K9F.3..LJI....E8O....
+..M5.2..AG8...FB9..K.30..
+.....6..B.91O.3.A..7..K..
+..9..M.5G4F.A.LH2.KC..7..
+46..5..2...HKN..I3.BM..G.
+...BA.73.NGJECI1.58.69...
+.L..DI.6F..897...N..3..1H
+..K..OC.J8B.D.09FE.6..4..
+..O..N..H.4.305.1..D.....
+..53.G..M7C...HIK..L.AB..
+....H08....OM2..5.FA9.3..
+GJ..2.LF6..7B....93.H.MNO
+6.4.F1ABO3I...KGM8.H2...D
+....4DNAIMKGF8...129C..5.
+.1DM....9...I5..N.B..8G..
+.FA8....1.64..M.E...DB90.
+.K3...G....E.OJ..40...FA.
+..J2.F58........6.IO...3.

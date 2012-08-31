@@ -1,0 +1,59 @@
+﻿
+the program implement a Backtracking algorithm to solve a Sudoku 
+of an size up to 36x36 (theoretically).
+
+the goal of this exercise is to learn the programing techniques in 
+Python (since I am newbie)  and to find and fine tune the algorithm
+in order to solve a 25x25 Sudoku in less than one hour. 
+
+The Sudoku is stored in a text file named ‘Sudoku.txt’.
+Important is to keep some point in mind.
+
+* The Sudoku size depend of the BoxSize. Example:
+
+   +---+---+     +--+--+--+
+   |***|...|     |**|..|..|
+   |***|...|     |**|..|..|
+   +---+---+     |**|..|..|
+   |...|...|     +--+--+--+ 
+   |...|...|     |..|..|..|
+   +---+---+     |..|..|..|
+   |...|...|     |..|..|..|
+   |...|...|     +--+--+--+ 
+   +---+---+
+              
+  This are 2 different Sudoku types the first one is (3,2) and the second (2,3). 
+  Both are described in common as 6x6. The basic key to solve a Sudoku is the 
+  Box Size and the Sudoku size is (BoxSizeX*BoxSizeY)*(BoxSizeX*BoxSizeY).
+  Take your time and think about and you will find the code much easere to understand
+
+* first line in 'Sudoku.txt' (ASCII) is a info line wath get prompted out in order to get 
+  you an info what sudoku will be solved
+  
+* second line in 'Sudoku.txt' is the box size in X. only the first caracter get used.
+  36x36 sudokus are the maxikum the program is designed for, but still not ready to solve 
+  in an practikable time
+  
+* third line in 'Sudoku.txt' is the box size in Y.
+
+* forth line get ignored
+
+* the Sudoku starts with line 5. the constants are:
+
+               +--------------------------------------+
+               | 0        1         2         3       |  
+               | 123456789012345678901234567890123456 |  
+  +------------+--------------------------------------+
+  | Constants: |'1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'|
+  +------------+--------------------------------------+
+  
+  this are the 36 carakters needed to solve 36x36 Sudoku. A 25x25 sudoku may contain only 
+  the first 25 caracters and the 9x9 if fine with digits only. you are not aloved to use 
+  an 'P' or above in and 25x25 Sudoku keep in mind that '0' is translatet into [integer 10] 
+  and [integer 0] is used in the program to indicate an empty field
+  
+* Empty field may be indicated by a any caracter not included in the list above like
+  '!@#$%^&*()_-"' or even a space. it does not matter as lot it is not a member of the list above.
+  
+* warning: the Solver is using extensivly your Processor Power like any games. to run this solver in an laptop
+  on a bed unatended may overheat you lovely toy. please ensure proper air flow on your computer.

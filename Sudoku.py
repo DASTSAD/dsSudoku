@@ -2,8 +2,8 @@
 # have fun!
 
 # Constants
-scBoxX=5      #Max 6, but not recomendet
-scBoxY=5     #Max 6, but not recomendet
+scBoxX=3      #Max 6, but not recomendet
+scBoxY=3     #Max 6, but not recomendet
 scValues=['&', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'A',
 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -11,29 +11,25 @@ Variable=True
 Constant=False
 Empty=0
 
-print("""
-please input your Sudoku you wish to solve in the folowing form (for a 3x3):
+scFile=open("Sudoku.txt")
+spam=scFile.readline()   # first line contain basic infor
+print(spam)
 
-***6*5*89
-*7**9*4*6
-4**72**5*
-**6***14*
-94**1**72
-*12***6**
-*9**72**8
-3*8*6**1*
-12*8*3***
+spam=scFile.readline()
+scBoxX=int(spam[0])      # secont line contain BoxSize in X direction
 
-of course you can use anything instead of '*' to mark empty boxes, even a space ' '.
-I used '*' only to make it more visible.
-""")
+spam=scFile.readline()
+scBoxY=int(spam[0])      # third line contain BoxSize in Y direction
 
-# first we take the input of the Sudoku from the command line
+spam=scFile.readline()   # skip the forth line
+
+
+# now we take the sudoku from the Sudoku.txt
 #
 size=scBoxX*scBoxY
 spam=[]
 for n in range(size):
-    spam.append(raw_input('{0} >'.format(n+1)))
+    spam.append(scFile.readline())
 
 # now we initialise an empty Sudoku with planty of '0'
 # and mark them as Variables ('True')
@@ -77,17 +73,22 @@ for j in range((scBoxX*scBoxY)**2):
                 box.append(sudoku[(y/scBoxY)*scBoxY+n][(x/scBoxX)*scBoxX+m][0])
         if row.count(sudoku[y][x][0])>1 or col.count(sudoku[y][x][0])>1 or box.count(sudoku[y][x][0])>1:
             i=-1
+            print(j)
 # in case the preset sudoku has a bug the counter 'i=-1'and
 # the solving loop dont get started. this is the same value
 # as in case solver cannot find a solution: a short-cut.
 # now the solving loop start.
 #
+print(sudoku)
 loopcounter=0
+checker=0
 direction=True
 while i<((scBoxX*scBoxY)**2) and i>=0:
     if direction==True:                            # if forward
+
         y=i//(scBoxX*scBoxY)                       # calculate y
         x=i%(scBoxX*scBoxY)                        # and x
+
         if sudoku[y][x][1]:                        # if field is Variable
             if sudoku[y][x][0]==(scBoxX*scBoxY):   # if field is MAX
                 sudoku[y][x][0]=0                  # set field to =0
@@ -105,20 +106,33 @@ while i<((scBoxX*scBoxY)**2) and i>=0:
                 # in case the number is unique we can jump the the next field
                 if row.count(sudoku[y][x][0])==1 and col.count(sudoku[y][x][0])==1 and box.count(sudoku[y][x][0])==1:
                     i=i+1
+   
         else: # in case field is 'constant' simply jump to the next one
             i=i+1
+        if (x==0 and y>1) :                                   # !!            
+            if checker<loopcounter//(500*(scBoxX*scBoxY)**2): # !!
+                print(loopcounter)                            # !!
+                checker=loopcounter//(500*(scBoxX*scBoxY)**2) # !!
+                for scot in range(scBoxX*scBoxY):             # !!
+                    row=[egg[0] for egg in sudoku[scot]]      # !!
+                    print('{0}->{1}'.format(scot+1, row))     # !! this is only to let you see how the numbers were found
+##            else:
+##                row=[egg[0] for egg in sudoku[y-1]]  # !!
+##                print('{0}->{1}'.format(y, row)) # !! this is only to let you see how the numbers were found               
+##
+##                row=[egg[0] for egg in sudoku[y]]  # !!
+##                print('{0}->{1}'.format(y+1, row)) # !! this is only to let you see how the numbers were found               
     if direction==False:               # if we go backwards
         i=i-1                          # logicaly we go one field back
         y=i//(scBoxX*scBoxY)
         x=i%(scBoxX*scBoxY)
         direction = sudoku[y][x][1]    # and set the direction forward if field is Variable.
-    row=[egg[0] for egg in sudoku[y]]  # !!
-    print('{0}->{1}'.format(y+1, row)) # !! this is only to let you see how the numbers were found
 # done sudoku is solved. now we need to print it nice out.
 if i<1:
     print(' ')
     print('there is no solution to your Sudoku')
 else:
+    print(sudoku)
     print(' ')
     for n in range(scBoxX*scBoxY):
         if n%scBoxY==0:
